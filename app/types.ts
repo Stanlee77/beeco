@@ -1,8 +1,8 @@
 export enum TrashColor {
-    paper = '#00BFFF',
+    paper = '#0582ca',
     glass = '#00FF00',
-    plastic = '#FFFF00',
-    organic = '#A52A2A',
+    plastic = '#ffc300',
+    organic = '#432818',
     other = '#000000',
 }
 

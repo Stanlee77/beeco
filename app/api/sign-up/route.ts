@@ -11,7 +11,6 @@ export async function POST(request: Request){
         if (!login || !password) {
             return NextResponse.json({"error": "incorrect login or password"}, {status: 418})
         }
-        console.log("")
         if (password != retype_password) {
             return NextResponse.json({"error": "passwords are not the same"}, {status: 418})
         }

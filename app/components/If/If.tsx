@@ -1,7 +1,7 @@
 import { FC, ReactElement } from "react";
 
 interface IfProps {
-  condition: boolean;
+  condition: boolean | null;
   children: ReactElement<any, any>;
   elseComponent?: ReactElement<any, any> | null;
 }
