@@ -9,6 +9,7 @@ import { TrashColor, TrashType } from "./types";
 import { Item } from "./types";
 import Layout from "./components/layout/layout";
 import If from "./components/If";
+import Link from "next/link";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -39,13 +40,23 @@ export default function Home() {
     </li>
   ));
 
-  const itemsNotFound = <p className="text-center"></p>;
+  const itemsNotFound = (
+    <div className="text-center">
+      <p className="mb-4">Brak produktów!</p>
+      <Link
+        href="/add-product"
+        className="font-bold py-2 px-4 bg-primary text-black"
+      >
+        Dodaj produkt
+      </Link>
+    </div>
+  );
 
   return (
     <Layout>
       <div className="p-4 h-[90%]">
         <Searchbar handleSearch={handleSearch} value={search} />
-        <ul className="max-h-[90%] overflow-scroll rounded-lg">
+        <ul className="max-h-[90%] min-h-[100px] overflow-scroll rounded-lg">
           <If
             condition={filteredCards.length > 0}
             elseComponent={itemsNotFound}
