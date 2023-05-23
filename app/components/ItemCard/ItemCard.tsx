@@ -1,20 +1,21 @@
-import { TrashColors } from "@/app/utils";
+import { PolishTrashType, TrashColor, TrashType } from "@/app/types";
 
 interface ItemCardProps {
-    item: {
-        name: string
-        dumpInto: string
-    }
-    color: string
+    name: string
+    dumpInto: TrashType | TrashColor
 }
 
-const ItemCard = ({ item, color }: ItemCardProps) => {
-    const isFontLight = (color === TrashColors.black) || (color === TrashColors.brown);
+const ItemCard = ({ dumpInto, name }: ItemCardProps) => {
+    // @ts-ignore
+    const cardColor: TrashColor = TrashColor[dumpInto];
+    // @ts-ignore
+    const dumpIntoName: PolishTrashType = PolishTrashType[dumpInto];
+    const isFontLight = (cardColor === TrashColor.other) || (cardColor === TrashColor.organic);
 
     return (
-        <div className={`flex flex-col justify-center items-center rounded-lg p-4 my-4`} style={{ backgroundColor: color, color: isFontLight ? 'white' : 'black' }}>
-            <h1 className="text-2xl font-bold">{item.name}</h1>
-            <p className="text-lg">{item.dumpInto}</p>
+        <div className={`flex flex-col justify-center items-center rounded-lg p-4 my-4`} style={{ backgroundColor: cardColor, color: isFontLight ? 'white' : 'black' }}>
+            <h1 className="text-2xl font-bold">{name}</h1>
+            <p className="text-lg">{dumpIntoName}</p>
         </div>
     )
 };
