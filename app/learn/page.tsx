@@ -1,82 +1,30 @@
-"use client";
-import React, { useEffect } from "react";
-import TrashBin from "./trashBin/TrashBin";
-import { PolishTrashType, TrashType } from "../types";
-import If from "../components/If";
+import Image from "next/image";
+import LearnLink from "./components/LearnLink";
+import beecoImage from "../../public/beeco.png";
 
-const Page: React.FC = () => {
-  const [userChoice, setUserChoice] = React.useState<TrashType | null>(null);
-  const [isCorrect, setIsCorrect] = React.useState<boolean | null>(null);
-  const [correctAnswer, setCorrectAnswer] = React.useState<TrashType | null>(
-    null
-  );
-  const [itemName, setItemName] = React.useState<string>("");
-
-  async function getRandomProduct() {
-    const data = await fetch(`http://localhost:3000/api/quiz`, {
-      cache: "no-store",
-    })
-      .then((res) => res.json())
-      .catch((err) => console.log(err));
-
-    setItemName(data[0].name);
-    setCorrectAnswer(data[0].dump_into);
-  }
-
-  useEffect(() => {
-    getRandomProduct();
-  }, []);
-
-  const handleChoice = (choice: TrashType) => {
-    if (userChoice !== null) return;
-    setUserChoice(choice);
-    setIsCorrect(choice === correctAnswer);
-  };
-
-  const handleNextQuestion = () => {
-    getRandomProduct();
-    setUserChoice(null);
-    setIsCorrect(null);
-  };
-
+const Page = () => {
   return (
-    <section className="pt-5">
-      <p className="text-xl text-center">Gdzie wyrzucisz: </p>
-      <h3 className="text-3xl text-center">{itemName}?</h3>
-      <If condition={isCorrect === true}>
-        <div className="bg-green-500 p-10 m-5 rounded-xl flex justify-center items-center">
-          <h1 className="text-4xl text-white">Brawo!</h1>
-        </div>
-      </If>
-      <If condition={isCorrect === false}>
-        <div>
-          <div className="bg-red-600 p-10 m-5 rounded-xl flex justify-center items-center">
-            <h1 className="text-4xl text-white">Pudło!</h1>
-          </div>
-          <h3 className="text-md text-center">
-            Poprawna odpowiedź:{" "}
-            {correctAnswer !== null ? PolishTrashType[correctAnswer] : null}
-          </h3>
-        </div>
-      </If>
-      <div className="fixed bottom-[60px] flex flex-col justify-center items-center gap-8">
-        <If condition={userChoice !== null}>
-          <button
-            className="p-4 bg-[#ffde00] rounded-full border-1 border-black text-xl"
-            onClick={handleNextQuestion}
-          >
-            Następne pytanie
-          </button>
-        </If>
-        <div className="flex flex-wrap p-2 gap-1 justify-center">
-          <TrashBin dumpInto={TrashType.glass} handleChoice={handleChoice} />
-          <TrashBin dumpInto={TrashType.organic} handleChoice={handleChoice} />
-          <TrashBin dumpInto={TrashType.other} handleChoice={handleChoice} />
-          <TrashBin dumpInto={TrashType.plastic} handleChoice={handleChoice} />
-          <TrashBin dumpInto={TrashType.paper} handleChoice={handleChoice} />
-        </div>
+    <div className="flex flex-col justify-center align-center gap-2 pt-2 px-5">
+      <h1 className="px-10 text-[32px] flex text-center items-center">
+        Baw się i ucz, beeco to klucz!
+      </h1>
+      <div className="flex text-center items-center">
+        To właśnie tutaj możesz poszerzać swoją wiedzę na temat segregacji!
+        Wybierz przystępną formę nauki połączonej z rozrywką. Lubisz
+        rywalizację? W takim razie zakładka Quiz jest dla Ciebie! Może wolisz
+        przyswajać wiedzę poprzez ciekawostki? Koniecznie zajrzyj w zakładkę
+        Ciekawostki!
       </div>
-    </section>
+      <Image className="w-52 h-52 mx-auto" src={beecoImage} alt="beeco" />
+      <ul className="flex flex-row w-full justify-center align-center gap-5 pt-5">
+        <li>
+          <LearnLink url="/learn/quiz" title="Quiz" />
+        </li>
+        <li>
+          <LearnLink url="/learn/tips" title="Ciekawostka" />
+        </li>
+      </ul>
+    </div>
   );
 };
 

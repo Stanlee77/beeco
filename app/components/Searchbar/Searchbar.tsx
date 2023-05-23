@@ -23,6 +23,7 @@ const Searchbar: FC<SearchbarProps> = ({ handleSearch, value }) => {
             type="search"
             id="search"
             placeholder="Szukaj"
+            autoComplete="off"
             content={value}
             onChange={handleSearch}
           />

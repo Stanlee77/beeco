@@ -10,7 +10,7 @@ import userIcon from "../../../public/icons/user.svg";
 
 const Navbar = () => {
   return (
-    <nav className="fixed bottom-0 left-0 w-[100%]">
+    <nav className="fixed bottom-0 left-0 w-[100%] z-10">
       <ul className="flex justify-evenly w-[100%] max-h-[10vh] bg-[#ffde00] p-3 box-border">
         <li>
           <Link href="/map">
