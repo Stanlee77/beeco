@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client";
 import { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -23,8 +24,9 @@ interface MapProps {
   markers: Point[];
 }
 
-export default function Map({ center, markers }: MapProps) {
+const Map = ({ center, markers }: MapProps) => {
   const [computedMarkers, _] = useState(markers);
+  console.log(markers);
   return (
     <MapContainer
       center={{ lat: center.location_lat, lng: center.location_lng }}
@@ -64,4 +66,5 @@ export default function Map({ center, markers }: MapProps) {
       ))}
     </MapContainer>
   );
-}
+};
+export default Map;
