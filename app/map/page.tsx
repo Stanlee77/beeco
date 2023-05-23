@@ -16,8 +16,7 @@ interface Point extends Location {
 
 const fetchDumpstersLocationData = async () => {
   const res = await fetch(`${process.env.BASE_URI}/api/get-dumpsters-location`);
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+  // TODO FIX ISSUE ON MOBILE DOESN'T SHOW
 
   // Recommendation: handle errors
   if (!res.ok) {
