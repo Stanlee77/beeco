@@ -39,9 +39,7 @@ export default function Home() {
     </li>
   ));
 
-  const itemsNotFound = (
-    <p className="text-center">Nie znaleziono produktów {":p"}</p>
-  );
+  const itemsNotFound = <p className="text-center"></p>;
 
   return (
     <Layout>
