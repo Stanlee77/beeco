@@ -29,7 +29,7 @@ export default function Map({ center, markers }: MapProps) {
     <MapContainer
       center={{ lat: center.location_lat, lng: center.location_lng }}
       zoom={12}
-      style={{ height: "100vh" }}
+      style={{ height: "100vh", zIndex: 1 }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
