@@ -1,16 +1,18 @@
-import './globals.css'
+import Navbar from "./components/Navbar";
+import "./globals.css";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-        <head />
-          <body>
-            {children}
-          </body>
-      </html>
-  )
+      <head />
+      <body>
+        <main>{children}</main>
+        <Navbar />
+      </body>
+    </html>
+  );
 }
