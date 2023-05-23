@@ -2,13 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 
-export default async function AddProductForm() {
+const AddProductForm = () => {
   const [materials, setMaterials] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-
-  const receivedMaterials = await fetch(
-    `${process.env.BASE_URI}/api/get-materials`
-  );
+  // W tym miescie zdarza sie na rerender
+  console.log("RERENDER");
 
   return (
     <div className="pt-10  px-5 mb-[60px]">
@@ -50,6 +48,7 @@ export default async function AddProductForm() {
         data-dropdown-toggle="dropdown"
         className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-flex justify-between w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         type="button"
+        onClick={() => setIsVisible(!isVisible)}
       >
         Dropdown button{" "}
         <svg
@@ -68,19 +67,16 @@ export default async function AddProductForm() {
           ></path>
         </svg>
       </button>
-      <div
-        id="dropdown"
-        className="z-1 relative"
-        style={{ display: isVisible ? "block" : "none" }}
-      >
+      <div id="dropdown" className="z-1 relative">
         <ul
-          className="py-2 text-sm text-gray-700 dark:text-gray-200 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700"
+          className="py-2 text-sm text-gray-700 dark:text-gray-200 absolute top-0 bg-white rounded-lg shadow w-44 dark:bg-gray-700"
           aria-labelledby="dropdownDefaultButton"
+          style={{ display: isVisible ? "block" : "none" }}
         >
           <li>
             <a
               href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white divide-y divide-gray-100"
             >
               Dashboard
             </a>
@@ -88,7 +84,7 @@ export default async function AddProductForm() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white divide-y divide-gray-100"
             >
               Settings
             </a>
@@ -96,7 +92,7 @@ export default async function AddProductForm() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white divide-y divide-gray-100"
             >
               Earnings
             </a>
@@ -104,7 +100,7 @@ export default async function AddProductForm() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white divide-y divide-gray-100"
             >
               Sign out
             </a>
@@ -113,4 +109,6 @@ export default async function AddProductForm() {
       </div>
     </div>
   );
-}
+};
+
+export default AddProductForm;
