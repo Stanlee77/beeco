@@ -13,7 +13,7 @@ export async function GET(request: Request){
         const name = searchParams.get("name")?.replace(/"/g, '')
         console.log(name);
         
-        const regex = new RegExp(`^${name}`)
+        const regex = new RegExp(`^.*${name}.*$`)
 
         let items;
         if(name){
