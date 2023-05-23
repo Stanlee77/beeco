@@ -6,19 +6,19 @@ const Page: React.FC = () => {
     let message = "";
   switch (type) {
     case "Zmieszane":
-      message = "Jaka mąka do szarlotki? Mąka pszenna krupczatka jest mąką idealną pod ciasta kruche. Ja jednak zazwyczaj mieszam mąką krupczatkę ze zwykła mąką pszenną tortową lub też uniwersalną. Czasem używam tylko mąki pszennej tortowej, ale daję wtedy małe jajko, ponieważ to niski typ mąki i nie potrzebuje tak dużo płynu. Przy idealnie dobranej ilości masła, mąka tortowa smakuje mi nawet bardziej niż ciasto kruche zrobione z krupczatki. ";
+      message = "Jaka mąka do szarlotki?";
       break;
     case "Papier":
-      message = "Jakie są najlepsze jabłka do zrobienia szarlotki? Są dwie odmiany jabłek, które polecam gorąco i które sprawdzą Ci się w 100%. Antonówki oraz szara reneta. Są to kwaśne, twarde jabłka. Nie puszczają tak dużo soku a zachowują idealną strukturę i smak, który jest wręcz pożądany przy takim cieście jak szarlotka. ";
+      message = "Jakie są najlepsze jabłka do zrobienia szarlotki?";
       break;
     case "Szkło":
-      message = "W pierwszej kolejności zagnieć ciasto kruche na szarlotkę. W dużej misce umieść razem dwie szklanki mąki (szklanka o pojemności 250 ml); jedno średnie jajko, które może być wyjęte prosto z lodówki; 1/4 szklankę cukru zwykłego lub drobnego - 80 g;  kostkę masła, którą polecam pokroić nożem na mniejsze kawałki. Masło również możesz wyjąć prosto z lodówki. Na koniec jeszcze tylko 2 łyżeczki proszku do pieczenia i ewentualnie szczypta soli. ";
+      message = "W pierwszej kolejności zagnieć ciasto kruche na szarlotkę.";
       break;
     case "Metal i plastik":
-      message = "Ciasto wyrabiaj dłońmi lub mikserem z hakami do ciasta kruchego. Ja zawsze ciasto kruche wyrabiam w dłoniach. Postaraj się to zrobić szybko. Na początku może Ci się wydawać, że ciasto jest zbyt sypkie, jednak w trakcie rozcierania masła powinno połączyć się w zwartą kulę. Ja wolę wyrabiać ciasto w dużej misce, ale możesz też zrobić to na dużej desce, czystym blacie lub stolnicy. ";
+      message = "Ciasto wyrabiaj";
       break;
     case "Bio":
-      message = "Przy tych proporcjach składników ciasto powinno wyjść idealne. Jeśli jednak dodasz za dużo mąki i okaże się, że ciasto nie łączy się w kulę polecam dodać łyżkę lodowatej wody lub płaską łyżkę kwaśnej śmietany 18 %.      ";
+      message = "Przy tych proporcjach składników ciasto powinno wyjść idealne.";
       break;
     default:
       message = "Z ciasta uformuj kulę. Zawiń je w folię i umieść w lodówce na całą godzinę."
