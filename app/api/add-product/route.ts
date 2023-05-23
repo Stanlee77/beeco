@@ -1,5 +1,6 @@
 import clientPromise from "@/lib/mongodb";
 import { NextResponse } from "next/server";
+import { ObjectId } from 'mongodb';
 
 export async function POST(request: Request){
     try {
@@ -17,12 +18,31 @@ export async function POST(request: Request){
         if(!dump_into){
             return NextResponse.json({'error': 'dump_into is not defined'}, {status: 418})
         }
+
         const client = await clientPromise;
         const db = client.db('products');
+        const materials = await db.collection("materials").find({}).toArray()
+        const materialsArr = new Array()
+        materials.forEach(material => {
+            materialsArr.push(material['material'])
+        });
+
+        const exists = materialsArr.includes(material)
+        if (!exists) {
+            return NextResponse.json({'error': 'such material doesn\'t exist'}, {status: 418})
+        }
+        const references = {
+            "plastic": "646cad8ed5958054ccfdef20",
+            "metal": "646cadc5d5958054ccfdef23", 
+            "glass": "646cadd2d5958054ccfdef24",
+            "wood": "646caddfd5958054ccfdef25",
+            "paper": "646cae05d5958054ccfdef27",
+            "cloth": "646cae1cd5958054ccfdef28"
+        }
         await db.collection("items").insertOne({
             barcode,
             name,
-            material,
+            material: new ObjectId(references[material]),
             dump_into
         });
         return NextResponse.json({'message': 'OK'}, {status: 200});
