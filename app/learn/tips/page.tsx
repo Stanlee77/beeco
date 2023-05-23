@@ -21,11 +21,15 @@ const Page: React.FC = () => {
   }, []);
 
   return (
-    <section className="pt-5">
-      <p className="text-xl text-center">Czy wiesz, że: </p>
-      <h3 className="text-3xl text-center">{randomTip}</h3>
+    <section>
+      <div className="flex flex-col justify-between gap-5 py-10 px-5">
+        <p className="text-2xl text-center">Czy wiesz, że: </p>
+        <h3 className="text-md text-center border-black border-2 rounded-md p-3">
+          {randomTip}
+        </h3>
+      </div>
       <button
-        className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full mt-5 block mx-auto"
+        className="bg-black text-white font-bold py-2 px-4 rounded-full bottom-28 left-[50%] transform translate-x-[-50%] absolute hover:bg-gray-700 transition duration-300 ease-in-out"
         onClick={() => getRandomTip()}
       >
         Losuj kolejną

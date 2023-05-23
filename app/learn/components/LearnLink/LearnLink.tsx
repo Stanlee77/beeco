@@ -9,7 +9,7 @@ interface LearnLinkProps {
 const LearnLink: FC<LearnLinkProps> = ({ url, title }) => {
   return (
     <Link
-      className="p-4 bg-black rounded-full text-white block w-36 text-xl flex justify-center align-center"
+      className="p-4 bg-black rounded-full text-white w-36 text-xl flex justify-center align-center"
       href={url}
     >
       {title}
