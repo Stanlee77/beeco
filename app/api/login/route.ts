@@ -20,7 +20,6 @@ export async function POST(request: Request){
             }, {status: 418})
         }
         
-        // console.log(password)
         const passCheck = await bcrypt.compare(password, users["password"])
         if (!passCheck) {
             return NextResponse.json({

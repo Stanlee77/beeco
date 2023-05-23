@@ -11,7 +11,6 @@ export async function GET(request: Request){
         const searchParams = url.searchParams;
         const limit = parseInt(searchParams.get("limit") || '1000')
         const name = searchParams.get("name")?.replace(/"/g, '')
-        console.log(name);
         
         const regex = new RegExp(`^.*${name}.*$`)
 
