@@ -1,56 +1,61 @@
 "use client";
 
-import { Suspense, useState } from 'react'
-import Navbar from './components/Navbar'
-import Searchbar from './components/Searchbar/Searchbar'
-import RootLayout from './layout'
-import ItemCard from './components/ItemCard';
-import { TrashColor, TrashType } from './types';
-import { Item } from './types';
-
+import { Suspense, useState } from "react";
+import Navbar from "./components/Navbar";
+import Searchbar from "./components/Searchbar/Searchbar";
+import RootLayout from "./layout";
+import ItemCard from "./components/ItemCard";
+import { TrashColor, TrashType } from "./types";
+import { Item } from "./types";
+import Layout from "./components/layout/layout";
+import If from "./components/If";
 
 export default function Home() {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
   const [products, setProducts] = useState<any>([]);
-  
+
   async function getProduct(params: string) {
-    const data = await fetch(`http://localhost:3000/api/products?name=${params}`, {
-      cache: "no-store",
-    })
+    const data = await fetch(
+      `http://localhost:3000/api/products?name=${params}`,
+      {
+        cache: "no-store",
+      }
+    )
       .then((res) => res.json())
       .catch((err) => console.log(err));
 
-      setProducts(data);
+    setProducts(data);
   }
 
   const handleSearch = (e: any) => {
-    e.preventDefault()
-    if(e.target.search.value === '') return setProducts([])
-    getProduct(e.target.search.value);
-    setSearch(e.target.search.value)
-  }
+    if (e.target.value === "") return setProducts([]);
+    getProduct(e.target.value);
+    setSearch(e.target.value);
+  };
 
-  const filteredCards = (  
-    products
-      .map((item: Item ) => 
-        <li key={item.name}>
-          <ItemCard name={item.name} dumpInto={item.dump_into} />
-        </li>
-      )
-  )
+  const filteredCards = products.map((item: Item) => (
+    <li key={item.name}>
+      <ItemCard name={item.name} dumpInto={item.dump_into} />
+    </li>
+  ));
+
+  const itemsNotFound = (
+    <p className="text-center">Nie znaleziono produktów {":p"}</p>
+  );
 
   return (
-    <RootLayout>
-      <div className='p-4 h-[90%]'>
-        <Searchbar 
-          handleSearch={handleSearch}
-          value={search}
-        />
+    <Layout>
+      <div className="p-4 h-[90%]">
+        <Searchbar handleSearch={handleSearch} value={search} />
         <ul className="max-h-[90%] overflow-scroll rounded-lg">
-          {filteredCards.length > 0 ? filteredCards : <p className="text-center">Nieznaleziono produktów {":("}</p>}
+          <If
+            condition={filteredCards.length > 0}
+            elseComponent={itemsNotFound}
+          >
+            {filteredCards}
+          </If>
         </ul>
       </div>
-      <Navbar />
-    </RootLayout>
-  )
+    </Layout>
+  );
 }
