@@ -55,12 +55,12 @@ const UserPanel = () => {
             src="/aktywnosc.png"
             alt="aktywnosc"
           />
-          <img
+          {/* <img
             className="w-64 h-64 left-[50%] translate-x-[-50%] absolute"
             style={{ marginTop: "850px" }}
             src="/beeco.png"
             alt="beeco"
-          />
+          /> */}
         </div>
       </div>
     </div>
