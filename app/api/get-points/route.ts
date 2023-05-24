@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     const collection = db.collection("users");
     const receivedUsers = await collection.find({}).toArray();
 
-    const modifiedReceivedUsers = receivedUsers.map((user) => {
+    const modifiedReceivedUsers = receivedUsers.map((user: any) => {
       return {
         _id: user?._id,
         points: user?.points || null,
