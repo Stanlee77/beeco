@@ -33,6 +33,12 @@ export async function POST(request: Request) {
 
     const client = await clientPromise;
     const db = client.db("products");
+    const item = await db.collection("items").findOne({name: name})
+    if (item) {
+      return NextResponse.json({
+        "error": "item already exists"
+    }, {status: 418})
+    }
     const materials = await db.collection("materials").find({}).toArray();
     const materialsArr = new Array();
     materials.forEach((material: any) => {
