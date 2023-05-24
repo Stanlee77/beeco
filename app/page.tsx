@@ -41,11 +41,11 @@ export default function Home() {
   ));
 
   const itemsNotFound = (
-    <div className="text-center">
-      <p className="mb-4">Brak produktów!</p>
+    <div className="text-center min-h-[150px]">
+      <p className="pb-10 pt-5">Nie znaleziono przedmiotu!</p>
       <Link
         href="/add-product"
-        className="font-bold py-2 px-4 bg-primary text-black"
+        className="font-bold p-4 bg-black text-white rounded-full"
       >
         Dodaj produkt
       </Link>
