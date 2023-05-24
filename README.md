@@ -2,29 +2,28 @@
 
 1. Clone GitHub repository:
 
-``bash
+bash
 gh repo clone Stanlee77/beeco
-```
 
-#or download it manually from: 
+or download it manually from: 
 https://github.com/Stanlee77/beeco
 
 2. Switch do master branch:
 
-```bash
+bash
 git checkout master
-```
+
 3. Install neccessary dependecies:
 
-```bash
+bash
 npm install
-```
+
 
 4. Then run the development server:
 
-```bash
+bash
 npm run dev
-```
+
 
 5. Open url address shown in terminal in your browser (works best in Chrome/Edge) usually it's http://localhost:3000/
 
