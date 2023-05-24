@@ -27,7 +27,7 @@ const fetchDumpstersLocationData = async () => {
   return res.json();
 };
 
-export default async function MapPage() {
+const MapPage = async () => {
   const receivedLocations = await fetchDumpstersLocationData();
   const POZNAN_CENTER_GEO = {
     location_lat: 52.4068505,
@@ -41,4 +41,6 @@ export default async function MapPage() {
       )}
     </div>
   );
-}
+};
+
+export default MapPage;

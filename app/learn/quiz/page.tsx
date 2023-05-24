@@ -62,7 +62,7 @@ const Page: React.FC = () => {
       <div className="fixed bottom-[60px] flex flex-col justify-center items-center gap-8">
         <If condition={userChoice !== null}>
           <button
-            className="p-4 bg-[#ffde00] rounded-full border-1 border-black text-xl"
+            className="px-4 py-2 bg-black text-white font-bold rounded-full"
             onClick={handleNextQuestion}
           >
             Następne pytanie
